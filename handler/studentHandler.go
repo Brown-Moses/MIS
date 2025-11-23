@@ -11,6 +11,12 @@ func StudentHandler(w http.ResponseWriter, r *http.Request) {
 
 	var s model.Student
 
+	//valid post method
+	if r.Method != http.MethodPost {
+		http.Error(w, "method not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
 	//decoding next and save to s
 	if err := json.NewDecoder(r.Body).Decode(&s); err != nil {
 		http.Error(w, "invalid json", http.StatusBadRequest)
