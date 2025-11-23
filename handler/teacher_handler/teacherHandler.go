@@ -2,12 +2,12 @@ package handler
 
 import (
 	"MIS/model"
-	"MIS/service"
+	service "MIS/service/teacher_service"
 	"encoding/json"
 	"net/http"
 )
 
-func TeacherHandler(w http.ResponseWriter, r *http.Request) {
+func TeachersHandler(w http.ResponseWriter, r *http.Request) {
 
 	var t model.Teacher
 

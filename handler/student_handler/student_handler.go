@@ -2,7 +2,7 @@ package handler
 
 import (
 	"MIS/model"
-	"MIS/service"
+	service "MIS/service/student_service"
 	"encoding/json"
 	"net/http"
 )

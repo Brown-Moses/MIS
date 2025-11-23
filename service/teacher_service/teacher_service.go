@@ -3,12 +3,13 @@ package service
 import (
 	"MIS/database"
 	"MIS/model"
+	validate "MIS/service/validation"
 )
 
 func AddTeacher(t model.Teacher) (model.Teacher, error) {
 
 	//validates
-	if err := ValidateTeacher(t); err != nil {
+	if err := validate.ValidateTeacher(t); err != nil {
 		return model.Teacher{}, err
 	}
 

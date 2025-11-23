@@ -2,27 +2,45 @@ package main
 
 import (
 	"MIS/database"
-	"MIS/handler"
 	"fmt"
 	"net/http"
+
+	"MIS/handler"
+
+	"log"
 
 	"github.com/go-chi/chi/v5"
 )
 
 func main() {
-	database.Connection()
+	//database connection
+	database.Connect()
 
 	fmt.Println("Connection successful...")
 
+	//add a chi router
 	r := chi.NewRouter()
 
-	r.Get("/student", handler.GetStudentsHandler)
+	//student path group
+	r.Route("/student", func(r chi.Router) {
 
-	r.Get("/student/{id}", handler.GetStudentsByIDHandler)
+		r.Get("/student", handler.GetStudentHandler)
 
-	r.Post("/student", handler.StudentHandler)
+		r.Get("/student/{id}", handler.GetStudentByIDHandler)
 
-	r.Post("/teacher", handler.TeacherHandler)
+		r.Post("/student", handler.StudentHandler)
 
-	http.ListenAndServe(":8080", r)
+	})
+
+	//teachers path group
+	r.Route("/teacher", func(r chi.Router) {
+		r.Post("/teacher", handler.TeacherHandler)
+	})
+
+	log.Println("Server running on port 8080")
+
+	//add error handling for things that go sideways
+	if err := http.ListenAndServe(":8080", r); err != nil {
+		log.Fatalf("server failed %v", err)
+	}
 }

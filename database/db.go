@@ -10,7 +10,7 @@ import (
 
 var DB *gorm.DB
 
-func Connection() {
+func Connect() {
 	//locate to database address
 	dsn := "host=localhost user=postgres password=930017 dbname=mis port=5432 sslmode=disable"
 
