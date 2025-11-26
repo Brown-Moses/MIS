@@ -1,9 +1,9 @@
 package service
 
 import (
-	"MIS/database"
-	"MIS/model"
-	validate "MIS/service/validation"
+	"MIS/internal/database"
+	"MIS/internal/model"
+	validate "MIS/internal/service/validation"
 )
 
 func AddTeacher(t model.Teacher) (model.Teacher, error) {

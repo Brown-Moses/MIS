@@ -1,7 +1,7 @@
 package validation
 
 import (
-	"MIS/model"
+	"MIS/internal/model"
 	"errors"
 	"strings"
 )

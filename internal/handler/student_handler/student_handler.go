@@ -1,15 +1,15 @@
 package handler
 
 import (
-	"MIS/model"
-	service "MIS/service/teacher_service"
+	"MIS/internal/model"
+	service "MIS/internal/service/student_service"
 	"encoding/json"
 	"net/http"
 )
 
-func TeachersHandler(w http.ResponseWriter, r *http.Request) {
+func StudentHandler(w http.ResponseWriter, r *http.Request) {
 
-	var t model.Teacher
+	var s model.Student
 
 	//valid post method
 	if r.Method != http.MethodPost {
@@ -17,22 +17,21 @@ func TeachersHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	//decode the json to go
-	if err := json.NewDecoder(r.Body).Decode(&t); err != nil {
+	//decoding next and save to s
+	if err := json.NewDecoder(r.Body).Decode(&s); err != nil {
 		http.Error(w, "invalid json", http.StatusBadRequest)
 		return
 	}
 
-	//ensure the validation too
-	savedTeacher, err := service.AddTeacher(t)
+	//add service
+	savedStudent, err := service.AddStudent(s)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 
-	//respond
-	//start with header
+	//respond, we encode then from go to json
 	w.Header().Set("Content-Type", "Application/json")
-	json.NewEncoder(w).Encode(savedTeacher)
+	json.NewEncoder(w).Encode(savedStudent)
 
 }

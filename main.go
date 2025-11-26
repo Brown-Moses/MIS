@@ -1,11 +1,11 @@
 package main
 
 import (
-	"MIS/database"
+	"MIS/internal/database"
 	"fmt"
 	"net/http"
 
-	"MIS/handler"
+	"MIS/internal/handler"
 
 	"log"
 

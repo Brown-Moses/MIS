@@ -1,8 +1,8 @@
 package service
 
 import (
-	"MIS/database"
-	"MIS/model"
+	"MIS/internal/database"
+	"MIS/internal/model"
 )
 
 // get all student

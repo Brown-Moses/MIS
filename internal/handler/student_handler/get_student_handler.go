@@ -1,7 +1,7 @@
 package handler
 
 import (
-	service "MIS/service/student_service"
+	service "MIS/internal/service/student_service"
 	"encoding/json"
 	"net/http"
 )

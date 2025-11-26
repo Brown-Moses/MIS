@@ -1,7 +1,7 @@
 package database
 
 import (
-	"MIS/model"
+	"MIS/internal/model"
 	"log"
 
 	"gorm.io/driver/postgres"

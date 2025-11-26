@@ -1,8 +1,8 @@
 package handler
 
 import (
-	student_handler "MIS/handler/student_handler"
-	teacher_handler "MIS/handler/teacher_handler"
+	student_handler "MIS/internal/handler/student_handler"
+	teacher_handler "MIS/internal/handler/teacher_handler"
 )
 
 // student handlers
