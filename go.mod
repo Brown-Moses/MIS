@@ -17,6 +17,7 @@ require (
 )
 
 require (
+	github.com/go-chi/cors v1.2.2
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.5 // indirect
 	golang.org/x/text v0.21.0 // indirect

@@ -9,6 +9,8 @@ import (
 
 	"log"
 
+	"github.com/go-chi/cors"
+
 	"github.com/go-chi/chi/v5"
 )
 
@@ -21,20 +23,28 @@ func main() {
 	//add a chi router
 	r := chi.NewRouter()
 
+	// inside main.go before routes
+	r.Use(cors.Handler(cors.Options{
+		AllowedOrigins:   []string{"http://localhost:3000"},
+		AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE"},
+		AllowedHeaders:   []string{"Accept", "Authorization", "Content-Type"},
+		AllowCredentials: true,
+	}))
+
 	//student path group
 	r.Route("/student", func(r chi.Router) {
 
-		r.Get("/student", handler.GetStudentHandler)
+		r.Get("/", handler.GetStudentHandler)
 
-		r.Get("/student/{id}", handler.GetStudentByIDHandler)
+		r.Get("/{id}", handler.GetStudentByIDHandler)
 
-		r.Post("/student", handler.StudentHandler)
+		r.Post("/", handler.AddStudentHandler)
 
 	})
 
 	//teachers path group
 	r.Route("/teacher", func(r chi.Router) {
-		r.Post("/teacher", handler.TeacherHandler)
+		r.Post("/", handler.TeacherHandler)
 	})
 
 	log.Println("Server running on port 8080")

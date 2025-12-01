@@ -2,15 +2,15 @@ package service
 
 import (
 	"MIS/internal/database"
-	"MIS/internal/model"
+	"MIS/internal/dto"
 )
 
 // get all student
 
-func GetStudents() ([]model.Student, error) {
+func GetStudents() ([]dto.StudentDTO, error) {
 
 	//temporary storage
-	var student []model.Student
+	var student []dto.StudentDTO
 
 	//load all members
 	err := database.DB.Find(&student).Error

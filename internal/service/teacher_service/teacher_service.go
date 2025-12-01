@@ -2,21 +2,21 @@ package service
 
 import (
 	"MIS/internal/database"
-	"MIS/internal/model"
+	"MIS/internal/dto"
 	validate "MIS/internal/service/validation"
 )
 
-func AddTeacher(t model.Teacher) (model.Teacher, error) {
+func AddTeacher(t dto.TeacherDTO) (dto.TeacherDTO, error) {
 
 	//validates
 	if err := validate.ValidateTeacher(t); err != nil {
-		return model.Teacher{}, err
+		return dto.TeacherDTO{}, err
 	}
 
 	//saves to db
 	if err := database.DB.Create(&t).Error; err != nil {
 		// returns teachers
-		return model.Teacher{}, err
+		return dto.TeacherDTO{}, err
 	}
 
 	return t, nil

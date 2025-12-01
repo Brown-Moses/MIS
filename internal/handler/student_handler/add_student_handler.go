@@ -1,15 +1,26 @@
 package handler
 
 import (
-	"MIS/internal/model"
+	"MIS/internal/dto"
 	service "MIS/internal/service/student_service"
 	"encoding/json"
 	"net/http"
 )
 
-func StudentHandler(w http.ResponseWriter, r *http.Request) {
+func AddStudentHandler(w http.ResponseWriter, r *http.Request) {
 
-	var s model.Student
+	// Parse form values from HTMX
+	if err := r.ParseForm(); err != nil {
+		http.Error(w, "invalid form", http.StatusBadRequest)
+		return
+	}
+
+	s := dto.StudentDTO{
+		FirstName: r.FormValue("first_name"),
+		LastName:  r.FormValue("last_name"),
+		Gender:    r.FormValue("gender"),
+		DOB:       r.FormValue("date_of_birth"),
+	}
 
 	//valid post method
 	if r.Method != http.MethodPost {

@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"MIS/internal/model"
+	"MIS/internal/dto"
 	service "MIS/internal/service/teacher_service"
 	"encoding/json"
 	"net/http"
@@ -9,7 +9,7 @@ import (
 
 func TeachersHandler(w http.ResponseWriter, r *http.Request) {
 
-	var t model.Teacher
+	var t dto.TeacherDTO
 
 	//valid post method
 	if r.Method != http.MethodPost {

@@ -9,7 +9,7 @@ import (
 var (
 	GetStudentHandler     = student_handler.GetStudentsHandler
 	GetStudentByIDHandler = student_handler.GetStudentsByIDHandler
-	StudentHandler        = student_handler.StudentHandler
+	AddStudentHandler     = student_handler.AddStudentHandler
 )
 
 // teachers

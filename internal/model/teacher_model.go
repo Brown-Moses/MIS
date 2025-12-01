@@ -4,6 +4,7 @@ import "gorm.io/gorm"
 
 type Teacher struct {
 	gorm.Model
-	Person  `GORM:"embedded"`
+	Name    string `json:"name"`
+	Gender  string `json:"gender"`
 	Subject string `json:"subject"`
 }

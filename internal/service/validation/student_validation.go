@@ -1,12 +1,12 @@
 package validation
 
 import (
-	"MIS/internal/model"
+	"MIS/internal/dto"
 	"errors"
 	"strings"
 )
 
-func ValidateStudent(s model.Student) error {
+func ValidateStudent(s dto.StudentDTO) error {
 
 	// removes unnecessry space and returns error
 

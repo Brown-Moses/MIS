@@ -1,19 +1,15 @@
 package validation
 
 import (
-	"MIS/internal/model"
+	"MIS/internal/dto"
 	"errors"
 	"strings"
 )
 
-func ValidateTeacher(t model.Teacher) error {
+func ValidateTeacher(t dto.TeacherDTO) error {
 
-	if strings.TrimSpace(t.FirstName) == "" {
-		return errors.New("first name is required")
-	}
-
-	if strings.TrimSpace(t.LastName) == "" {
-		return errors.New("last name is required")
+	if strings.TrimSpace(t.Name) == "" {
+		return errors.New("name is required")
 	}
 
 	if strings.TrimSpace(t.Gender) == "" {
